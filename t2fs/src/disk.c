@@ -371,9 +371,13 @@ int toAbsolutePath(char * path, char * currPath, char ** output) {
             if(strcmp(buffer,"") == 0) {
                 strcpy(buffer,"/");
             }
-        } else if (strcmp(tokenizedPath[i],".") != 0) {
-            strcat(buffer,"/");
-            strcat(buffer,tokenizedPath[i]);
+        } else{
+             if (strcmp(tokenizedPath[i],".") != 0) {
+                if(strcmp(buffer,"/")!=  0){
+                    strcat(buffer,"/");
+                }
+                strcat(buffer,tokenizedPath[i]);
+            }
         }
     }
 
@@ -408,4 +412,34 @@ int separatePath(char * path, char ** FristStringOutput, char ** SecondStringOut
     memcpy(*FristStringOutput, path, lenghtPath-lenghtAux);
 
     return 0;
+}
+
+int changeDir(char * path){
+    char * absolute;
+    int clusterNewPath;
+    if(toAbsolutePath(path, currentPath.absolute, &absolute) == -1)
+        return -1;
+
+    clusterNewPath = pathToCluster(absolute);
+    if(clusterNewPath == -1)
+        return -1;
+    
+    strcpy(currentPath.absolute, absolute);
+    currentPath.clusterNo = clusterNewPath;
+
+    free(absolute);
+    
+    return 0;    
+}
+int mkdir(char * path){
+    char * absolute;
+    char * fristOut;
+    char * secondOut;
+
+    int firstClusterFreeInFAT;
+
+    toAbsolutePath(path, currentPath.absolute, &absolute);
+    separatePath(absolute, &fristOut, &secondOut);
+
+    
 }
