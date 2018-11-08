@@ -110,7 +110,7 @@ int main() {
     }
 
 
-    toAbsolutePath("./b/c/d/e/f/g/h/i/../../j/./k///","/aaa/bbb",&testeAbsolute);
+    toAbsolutePath("../b/c/d/e/f/g/h/i/../j/./k///","/aaa/bbb",&testeAbsolute);
 
     printf("\nTESTE ABSOLUTE: %s\n", testeAbsolute);
 
