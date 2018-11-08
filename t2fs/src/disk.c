@@ -395,6 +395,7 @@ int separatePath(char * path, char ** FristStringOutput, char ** SecondStringOut
     int lenghtAux;
     int lenghtPath = strlen(path);
     char *aux =  malloc(lenghtPath);
+    
     //Nunca vão ter um tamanho maior que o path
     *SecondStringOutput = malloc(lenghtPath);
     memset(*SecondStringOutput,'\0',lenghtPath);
