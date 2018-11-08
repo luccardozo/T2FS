@@ -431,6 +431,7 @@ int changeDir(char * path){
     
     return 0;    
 }
+
 int mkdir(char * path){
     char * absolute;
     char * fristOut;
@@ -440,6 +441,4 @@ int mkdir(char * path){
 
     toAbsolutePath(path, currentPath.absolute, &absolute);
     separatePath(absolute, &fristOut, &secondOut);
-
-    
 }
