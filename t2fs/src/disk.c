@@ -395,7 +395,7 @@ int separatePath(char * path, char ** FristStringOutput, char ** SecondStringOut
     int lenghtAux;
     int lenghtPath = strlen(path);
     char *aux =  malloc(lenghtPath);
-    
+
     //Nunca vão ter um tamanho maior que o path
     *SecondStringOutput = malloc(lenghtPath);
     memset(*SecondStringOutput,'\0',lenghtPath);
@@ -406,5 +406,6 @@ int separatePath(char * path, char ** FristStringOutput, char ** SecondStringOut
     lenghtAux = strlen(aux);
     memcpy(*SecondStringOutput,aux+1,lenghtAux);
     memcpy(*FristStringOutput, path, lenghtPath-lenghtAux);
+
     return 0;
 }
